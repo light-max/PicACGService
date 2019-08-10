@@ -119,6 +119,6 @@ public class KeyBufferManager {
                     }
                 }
             }
-        }.start();
+        };
     }
 }

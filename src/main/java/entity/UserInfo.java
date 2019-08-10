@@ -18,16 +18,20 @@ public class UserInfo extends User {
      * 用户性别 男1 女2 未知 其他|null
      */
     @NonNull
-    private int sex;
+    private Integer sex;
     /**
      * 个性签名
      */
     @NonNull
     private String word;
 
-    public UserInfo(String nickname, int sex, String word) {
+    public UserInfo(String nickname, Integer sex, String word) {
         this.nickname = nickname;
         this.sex = sex;
         this.word = word;
+    }
+
+    public UserInfo() {
+        this("", 0, "");
     }
 }

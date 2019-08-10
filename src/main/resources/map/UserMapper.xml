@@ -3,5 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UserMapper">
+    <select id="selectUserInfoById" resultType="entity.UserInfo" parameterType="java.lang.Long">
+        select * from user where id=#{id}
+    </select>
 
+    <select id="selectNicknameAll" resultType="model.SearchValue">
+         select id,nickname value from user
+    </select>
 </mapper>

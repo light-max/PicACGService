@@ -1,8 +1,10 @@
 package service.imp;
 
+import dao.SubmissionMapper;
 import dao.UserMapper;
 import entity.User;
 import entity.UserInfo;
+import model.AuthorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.UserService;
@@ -14,6 +16,9 @@ public class UserServiceImp implements UserService {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    SubmissionMapper submissionMapper;
 
     @Override
     public int verify(String name, String password) {
@@ -93,5 +98,30 @@ public class UserServiceImp implements UserService {
         KeyBufferManager manager = KeyBufferManager.getInstance();
         User user = manager.getUser(key);
         userMapper.updateUserInfo(info, user.getId());
+    }
+
+    @Override
+    public UserInfo selectUserInfo(long key) {
+        KeyBufferManager manager = KeyBufferManager.getInstance();
+        User user = manager.getUser(key);
+        return userMapper.selectUserInfoById(user.getId());
+    }
+
+    @Override
+    public AuthorInfo selectAuthorInfo(long id) {
+        UserInfo info = userMapper.selectUserInfoById(id);
+        if (info == null) {
+            return null;
+        }
+        String sex = "";
+        if (info.getSex() == 1) {
+            sex = "男";
+        } else if (info.getSex() == 2) {
+            sex = "女";
+        }
+        Integer number = submissionMapper.selectNumberByAuthorId(id);
+        String img_small = StringTools.url + "/image/small/head/" + id;
+        String img_source = StringTools.url + "/image/source/head/" + id;
+        return new AuthorInfo(info.getNickname(), sex, number == null ? 0 : number, info.getWord(), img_small, img_source);
     }
 }

@@ -54,6 +54,16 @@ public class VerifyCodeTools {
     }
 
     /**
+     * 判断验证码是否还存在
+     *
+     * @param id
+     * @return
+     */
+    public boolean exist(long id) {
+        return codeMap.get(id) != null;
+    }
+
+    /**
      * 随机生成验证码
      *
      * @return
@@ -64,7 +74,7 @@ public class VerifyCodeTools {
             index = -index;
         }
         VerifyCode obj = table[index % table.length];
-        return new VerifyCode(obj.getProblem(),obj.getAnswer());
+        return new VerifyCode(obj.getProblem(), obj.getAnswer());
     }
 
     /**

@@ -1,13 +1,15 @@
 package controller;
 
 import entity.UserInfo;
+import model.AuthorInfo;
 import org.apache.ibatis.annotations.Param;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Scope;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import service.UserService;
+import util.FileTools;
 import util.KeyBufferManager;
 
 /**
@@ -30,7 +32,7 @@ public class UserController {
      * @param args
      * @return
      */
-    @GetMapping(value = "/set_name")
+    @GetMapping(value = "/set/name")
     public String updateName(
             @Param(value = "name") String name,
             @Param(value = "key") long key,
@@ -65,7 +67,7 @@ public class UserController {
      * @param args
      * @return
      */
-    @GetMapping(value = "/set_password")
+    @GetMapping(value = "/set/password")
     public String updatePassword(
             @Param(value = "name") String name,
             @Param(value = "key") long key,
@@ -100,7 +102,7 @@ public class UserController {
      * @param args
      * @return
      */
-    @GetMapping(value = "/set_data")
+    @GetMapping(value = "/set/data")
     public int updatePersonalData(
             @Param(value = "name") String name,
             @Param(value = "key") long key,
@@ -113,11 +115,80 @@ public class UserController {
             int sex = data.getInt("sex");
             String word = data.getString("word");
             UserInfo info = new UserInfo(nickname, sex, word);
-            System.out.println(info);
             userService.updateInfoData(info, key);
             return 0;
         }
         return -1;
     }
 
+    /**
+     * 获取用户数据
+     *
+     * @param name
+     * @param key
+     * @return 返回一个json，包含了用户部分数据和code 如果code为-1，则请求失败
+     */
+    @GetMapping(value = "/get/data")
+    public String getPersonalData(
+            @Param(value = "name") String name,
+            @Param(value = "key") long key
+    ) {
+        JSONObject object = new JSONObject();
+        KeyBufferManager manager = KeyBufferManager.getInstance();
+        object.put("code", -1);
+        if (manager.verify(name, key)) {
+            UserInfo info = userService.selectUserInfo(key);
+            object.put("nickname", info.getNickname());
+            object.put("sex", info.getSex());
+            object.put("word", info.getWord());
+            object.put("code", 0);
+            object.put("id", info.getId());
+        }
+        return object.toString();
+    }
+
+    /**
+     * 设置用户头像 图片大小最大为5M 如果图片不是正方形就返回-3
+     *
+     * @param name
+     * @param key
+     * @param file
+     * @return
+     */
+    @Scope("prototype")
+    @PostMapping(value = "/set/head")
+    public int set_head(
+            @Param(value = "name") String name,
+            @Param(value = "key") long key,
+            @RequestParam MultipartFile file
+    ) {
+        if (file.getSize() < 1024 * 1024 * 5) {
+            KeyBufferManager manager = KeyBufferManager.getInstance();
+            if (manager.verify(name, key)) {
+                if (FileTools.saveUserHead(userService.findIdByName(name), file)) {
+                    return 0;
+                }
+                return -3;
+            }
+            return -1;
+        }
+        return -2;
+    }
+
+    /**
+     * 获取作者信息
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/get/authorinfo/{id}")
+    public String get_authorinfo(
+            @PathVariable(value = "id") long id
+    ) {
+        AuthorInfo info = userService.selectAuthorInfo(id);
+        if (info == null) {
+            return "{\"code\":-1}";
+        }
+        return info.toJson();
+    }
 }

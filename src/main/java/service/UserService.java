@@ -1,6 +1,7 @@
 package service;
 
 import entity.UserInfo;
+import model.AuthorInfo;
 
 public interface UserService {
 
@@ -66,4 +67,20 @@ public interface UserService {
      * @param key
      */
     void updateInfoData(UserInfo info, long key);
+
+    /**
+     * 根据key来查找用户数据
+     *
+     * @param key
+     * @return
+     */
+    UserInfo selectUserInfo(long key);
+
+    /**
+     * 查询作者信息，把用户数据已作者信息的形式返回
+     *
+     * @param id
+     * @return
+     */
+    AuthorInfo selectAuthorInfo(long id);
 }

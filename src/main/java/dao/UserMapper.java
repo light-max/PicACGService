@@ -2,6 +2,7 @@ package dao;
 
 import entity.User;
 import entity.UserInfo;
+import model.SearchValue;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -28,4 +29,16 @@ public interface UserMapper {
 
     @Update("update user set nickname=#{info.nickname},sex=#{info.sex},word=#{info.word} where id=#{id}")
     void updateUserInfo(@Param(value = "info") UserInfo info, @Param(value = "id") long id);
+
+    @Select("select nickname from user where id=#{id}")
+    String selectNicknameById(@Param(value = "id") long id);
+
+    UserInfo selectUserInfoById(@Param(value = "id") long id);
+
+    /**
+     * 查找所有昵称，返回值加上id
+     *
+     * @return
+     */
+    List<SearchValue> selectNicknameAll();
 }

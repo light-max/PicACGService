@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.SubmissionMapper">
+    <insert id="insert" parameterType="entity.Submission" useGeneratedKeys="true" keyProperty="id">
+        insert into submission(byuserid, title, keyword, introduction, number, star, watch,releasetime)
+        values (#{byuserid},#{title},#{keyword},#{introduction},#{number},#{star},#{watch},#{releasetime})
+    </insert>
+
+    <select id="selectId" resultType="java.lang.Long">
+        select id from submission
+    </select>
+
+    <select id="selectById" resultType="model.Manuscript" parameterType="java.lang.Long">
+        select * from submission where id=#{id}
+    </select>
+
+    <select id="selectNumberByAuthorId" resultType="java.lang.Integer" parameterType="java.lang.Long">
+        select count(*) from submission where byuserid=#{byuserid}
+    </select>
+
+    <update id="addStar" parameterType="java.lang.Long">
+        update submission set star=star+1 where id=#{id}
+    </update>
+
+    <update id="addWatch" parameterType="java.lang.Long">
+        update submission set watch=watch+1 where id=#{id}
+    </update>
+
+    <select id="selectSortElementAll" resultType="model.SortManuscript">
+        select id,star,watch,releasetime from submission
+    </select>
+
+    <select id="selectAllByUserId" resultType="java.lang.Long" parameterType="java.lang.Long">
+        select id from submission where byuserid=#{byuserid} and id>#{lastid}
+    </select>
+
+    <!--    value是字段名-->
+    <select id="selectTitleAll" resultType="model.SearchValue">
+        select id,title value from submission
+    </select>
+    <select id="selectKeywordAll" resultType="model.SearchValue">
+        select id,keyword value from submission
+    </select>
+</mapper>

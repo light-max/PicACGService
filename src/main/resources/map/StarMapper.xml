@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StarMapper">
+    <select id="selectStarNumber" resultType="java.lang.Integer" parameterType="java.lang.Long">
+        select count(*) from star where manuscriptid=#{manuscriptid}
+    </select>
+
+    <select id="checkStar" resultType="java.lang.Boolean">
+        select exists (select 1 from star where userid=#{userid} and manuscriptid=#{manuscriptid})
+    </select>
+
+    <insert id="insert">
+        insert into star(userid, manuscriptid) values (#{userid},#{manuscriptid})
+    </insert>
+
+    <delete id="clearStar" parameterType="java.lang.Long">
+        delete from star where manuscriptid=#{manuscriptid}
+    </delete>
+</mapper>

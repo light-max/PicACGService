@@ -41,5 +41,6 @@
         <property name="maxUploadSize" value="-1"/>
     </bean>
 
+    <bean class="util.MyStartInit"/>
 
 </beans>

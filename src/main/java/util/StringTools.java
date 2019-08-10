@@ -5,6 +5,8 @@ package util;
  */
 public class StringTools {
 
+    public static final String url = "http://192.168.0.104:8080";
+
     /**
      * 验证登录名是否合法
      *

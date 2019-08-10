@@ -25,7 +25,7 @@ public class LoginController {
             "登录成功", "账号未注册", "密码错误"
     };
     private final String sign_up_message[] = new String[]{
-            "注册成功", "验证码错误", "账号已存在", "账号或密码格式错误"
+            "注册成功", "验证码错误", "账号已存在", "账号或密码格式错误", "验证码已过时"
     };
 
     /**
@@ -68,7 +68,7 @@ public class LoginController {
      * @param id       验证码的id号
      * @param answer   验证码的答案
      * @return json{
-     * code:注册代码 0注册成功, 1验证码错误, 2账号已存在, 3账号或密码格式错误
+     * code:注册代码 0注册成功, 1验证码错误, 2账号已存在, 3账号或密码格式错误 4验证码过时
      * message:注册信息
      * }
      */
@@ -82,14 +82,21 @@ public class LoginController {
         VerifyCodeTools util = VerifyCodeTools.getInstance();
         JSONObject object = new JSONObject();
         //默认验证码错误
-        int code = 1;
-        //验证成功
-        if (util.verify(id, answer)) {
-            code = userService.sign_up(name, password);
-            //注册成功清除验证码
-            if (code == 0) {
-                util.remove(id);
+        int code;
+        //验证码存在
+        if (util.exist(id)) {
+            //验证成功
+            if (util.verify(id, answer)) {
+                code = userService.sign_up(name, password);
+                //注册成功清除验证码
+                if (code == 0) {
+                    util.remove(id);
+                }
+            } else {
+                code = 1;
             }
+        } else {
+            code = 4;
         }
         object.put("code", code);
         object.put("message", sign_up_message[code]);
