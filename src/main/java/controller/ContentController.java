@@ -3,6 +3,7 @@ package controller;
 import model.Manuscript;
 import org.apache.ibatis.annotations.Param;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +27,7 @@ public class ContentController {
     /**
      * 随机获取其他用户发的稿件
      *
-     * @param number 要获取的稿件的数量 最大值8
+     * @param number 要获取的稿件的数量
      * @return
      */
     @GetMapping(value = "/random")
@@ -49,10 +50,14 @@ public class ContentController {
             @Param(value = "number") int number,
             @Param(value = "filter_id") String filter_id
     ) {
-        JSONArray filter_array = new JSONArray(filter_id);
+        JSONArray filter_array;
         List<Long> id = new ArrayList<>();
-        for (int i = 0; i < filter_array.length(); i++) {
-            id.add(filter_array.getLong(i));
+        if (!filter_id.equals("null")) try {
+            filter_array = new JSONArray(filter_id);
+            for (int i = 0; i < filter_array.length(); i++) {
+                id.add(filter_array.getLong(i));
+            }
+        } catch (JSONException ignored) {
         }
         List<Manuscript> list = contentService.get(number, id);
         return contentService.toJson(list);

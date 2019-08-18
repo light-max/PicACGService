@@ -40,7 +40,7 @@ public class ImageController {
             file = FileTools.getUserHeadImage_Small(id);
         }
         if (file == null || !file.exists()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            file = FileTools.defaultHead;
         }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentDispositionFormData("attachment", file.getName());

@@ -1,0 +1,21 @@
+.atlas {
+    width: max-content;
+    margin: 0 auto;
+    padding-bottom: 8px;
+}
+
+.atlas-image {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    width: 720px;
+    height: auto;
+    border-radius: 4px;
+    display: flex;
+    object-fit: cover;
+}
+
+.atlas-image-source {
+    font-size: 12px;
+    color: #8a8a8a;
+    cursor: pointer;
+}

@@ -1,0 +1,91 @@
+.list {
+    width: max-content;
+    margin: 0 auto;
+}
+
+.item {
+    margin: 12px;
+    background-color: white;
+    padding: 24px;
+    border-radius: 4px;
+    display: flex;
+    min-width: 640px;
+    vertical-align: middle;
+}
+
+.item-box {
+    margin-left: 12px;
+}
+
+.atlas {
+    width: 458px;
+    font-size: 0px;
+}
+
+.atlas-item {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 1px;
+    border-radius: 4px;
+}
+
+.round_icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nickname {
+    color: #fb7299;
+    font-size: 16px;
+}
+
+.time {
+    font-size: 12px;
+    color: #99a2aa;
+    margin-top: 8px;
+}
+
+.title {
+    font-size: 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.keyword {
+    font-size: 16px;
+    color: #00a1d6;
+}
+
+.introduction {
+    font-size: 16px;
+    color: #000;
+}
+
+.status {
+    margin-top: 16px;
+    display: flex;
+}
+
+.status-item {
+    min-width: 100px;
+}
+
+.status-item > img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.status-item > span {
+    margin-left: 6px;
+    font-size: 14px;
+    color: #8a8a8a;
+    vertical-align: middle;
+}

@@ -26,6 +26,8 @@ public class FileTools {
     private static final File head_source = new File(image, "head_source");
     private static final File head_small = new File(image, "head_small");
     private static final File head_temp = new File(image, "head_temp");
+    //默认头像
+    public static final File defaultHead = new File(image, "default/head.jpg");
 
     /**
      * 保存投稿图片，再保存一份缩略图
