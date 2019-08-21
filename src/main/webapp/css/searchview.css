@@ -1,0 +1,85 @@
+.root {
+    width: 800px;
+    min-height: 400px;
+    background-color: white;
+    border-radius: 4px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.search {
+    margin-top: 20px;
+    width: 600px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+}
+
+.nav {
+    background-color: #eeeeee;
+    text-align: left;
+    margin: 15px;
+}
+
+.nav-item {
+    cursor: pointer;
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.nav-activity {
+    background-color: #00a1d6;
+    border-radius: 4px;
+    color: white;
+}
+
+.list {
+    width: 800px;
+    text-align: left;
+}
+
+.list-item {
+    width: 370px;
+    height: 100px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #99a2aa66;
+    cursor: pointer;
+}
+
+.list-item-icon {
+    width: 98px;
+    height: 98px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid #99a2aa66;
+}
+
+.list-item-value {
+    margin-left: 15px;
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}

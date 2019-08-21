@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>注册</title>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-    <script src="js/jquery/jquery.js"></script>
-    <script src="js/login.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <script src="/js/jquery/jquery.js"></script>
+    <script src="/js/login.js"></script>
 </head>
 <body onload="get_verify()">
 <div class="col-lg-offset-4 col-lg-4" style="padding-bottom: 100px">

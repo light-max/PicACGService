@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>登录</title>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-    <script src="js/login.js"></script>
-    <script src="js/jquery/jquery.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <script src="/js/login.js"></script>
+    <script src="/js/jquery/jquery.js"></script>
 </head>
 <body>
 <div class="col-lg-offset-4 col-lg-4" style="padding-bottom: 100px">

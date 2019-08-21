@@ -89,3 +89,11 @@
     color: #8a8a8a;
     vertical-align: middle;
 }
+
+.list-image-show {
+    width: auto;
+    height: auto;
+    max-width: 600px;
+    max-height: 1200px;
+    margin-left: -50px;
+}

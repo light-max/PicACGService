@@ -23,6 +23,15 @@ window.onload = function () {
     }
 };
 
+$(window).scroll(function () {
+    const scrollTop = $(this).scrollTop();
+    const scrollHeight = $(document).height();
+    const windowHeight = $(this).height();
+    if (scrollTop + windowHeight + 8 >= scrollHeight) {
+        getContent()
+    }
+});
+
 let lastid = 0;
 let id = 0;
 

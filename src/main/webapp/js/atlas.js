@@ -1,7 +1,7 @@
 let json = null;
 
-window.onload = $.get('content/get/' + getQueryVariable('id'), function (data) {
-    json = JSON.parse(data)
+window.onload = $.get('content/get/' + parseInt(getQueryVariable('id')), function (data) {
+    json = JSON.parse(data);
     let images = json['show'];
     for (let i = 0; i < images.length; i++) {
         $('#list').append(`<img class="atlas-image" src="${images[i]}"/>`);

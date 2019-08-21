@@ -9,10 +9,10 @@
 <html>
 <head>
     <title>空间</title>
-    <link rel="stylesheet" type="text/css" href="css/space.css">
-    <script src="js/jquery/jquery.js"></script>
-    <script src="js/function.js"></script>
-    <script src="js/authorspace.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/authorspace.css">
+    <script src="/js/jquery/jquery.js"></script>
+    <script src="/js/function.js"></script>
+    <script src="/js/authorspace.js"></script>
 </head>
 <body style="background-color: #d2e9fb">
 <div class="root">

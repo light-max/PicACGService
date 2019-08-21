@@ -27,10 +27,10 @@ public class SubmissionServiceImp implements SubmissionService {
 
     @Override
     public int upload(long byuserid, String title, String keyword, String introduction, MultipartFile[] files) {
-        if (title.length() > 16) {
+        if (title.length() > 32) {
             return 2;
         }
-        if (keyword.length() > 16) {
+        if (keyword.length() > 32) {
             return 3;
         }
         if (introduction.length() > 64) {

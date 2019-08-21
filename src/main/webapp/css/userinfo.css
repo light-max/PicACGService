@@ -1,0 +1,32 @@
+.root {
+    width: max-content;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.head-icon {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    border: 2px solid hsla(0, 0%, 36%, 0.4);
+    cursor: pointer;
+}
+
+.head-div {
+    width: 600px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.info {
+    width: 600px;
+    background-color: white;
+    border-radius: 4px;
+    margin-top: 10px;
+    padding: 20px;
+}

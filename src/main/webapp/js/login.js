@@ -19,14 +19,14 @@ function sign_in() {
                         opener.sessionStorage.setItem('id', json['id']);
                         opener.sessionStorage.setItem('word', json['word']);
                         $('#login', opener.document).hide();
-                        $('#icon', opener.document).show();
+                        $('#icon-div', opener.document).show();
                         $('#icon', opener.document).attr('src', 'image/small/head/' + json['id']);
-                        window.close()
-                    } else if (flag === 'space') {
+                    } else {
                         opener.sessionStorage.setItem('key', key);
                         opener.sessionStorage.setItem('name', name);
                     }
                 }
+                window.close()
             });
         }
         $('#message').text(json.message);

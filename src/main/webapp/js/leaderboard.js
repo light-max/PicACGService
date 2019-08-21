@@ -1,5 +1,5 @@
 window.onload = function () {
-    $('#nav-home').addClass('nav-item-a-activity');
+    setTitle();
     getContent();
     let key = window.sessionStorage.getItem('key');
     if (key != null) {
@@ -19,31 +19,43 @@ $(window).scroll(function () {
     const scrollHeight = $(document).height();
     const windowHeight = $(this).height();
     if (scrollTop + windowHeight + 8 >= scrollHeight) {
-        getContent()
+        getContent();
     }
 });
 
-let g_ids = [];
+function setTitle() {
+    let type = getQueryVariable('type');
+    if (type === 'time') {
+        $('#title').text('最新发布');
+        $('#nav-time').addClass('nav-item-a-activity');
+    } else if (type === 'star') {
+        $('#title').text('最多点赞');
+        $('#nav-star').addClass('nav-item-a-activity');
+    } else if (type === 'watch') {
+        $('#title').text('最多浏览');
+        $('#nav-watch').addClass('nav-item-a-activity');
+    }
+}
+
+let lastid = 0;
 
 function getContent() {
-    $.get(
-        "/content/get",
-        {number: 4, filter_id: JSON.stringify(g_ids)},
-        function (data) {
-            const json = JSON.parse(data);
-            const content = json['content'];
-            if (content.length > 0) {
-                for (let i = 0; i < content.length; i++) {
-                    g_ids.push(content[i]['id']);
-                    const html = createAtlas(content[i]);
-                    $('#list').append(html);
-                    $('#end').hide()
-                }
-            } else {
-                $('#end').show()
+    $.get(`/content/sort/${getQueryVariable('type')}`, {
+        number: 4, lastid: lastid
+    }, function (data) {
+        const json = JSON.parse(data);
+        const content = json['content'];
+        if (content.length > 0) {
+            for (let i = 0; i < content.length; i++) {
+                const html = createAtlas(content[i]);
+                $('#list').append(html);
+                $('#end').hide();
+                lastid = content[i]['id']
             }
+        } else {
+            $('#end').show()
         }
-    );
+    });
 }
 
 function createAtlas(content) {
@@ -56,8 +68,7 @@ function createAtlas(content) {
     }
 
     const head = ('/image/small/head/' + content['author']);
-    const html =
-        `<div class="item" id="${content['id']}">` +
+    return `<div class="item" id="${content['id']}">` +
         `<img class="round_icon" src="${head}" author="${content['author']}" onclick="openAuthorSpace(this)"/>` +
         `<div class="item-box">` +
         `<div class="nickname">${content['authorname']}</div>` +
@@ -72,8 +83,7 @@ function createAtlas(content) {
         `<div  class="status-item" onclick="openAtlas(this)"><span style="cursor:pointer;">查看图集</span></div>` +
         `</div>` +
         `</div>` +
-        `</div>`;
-    return html
+        `</div>`
 }
 
 function star(obj) {

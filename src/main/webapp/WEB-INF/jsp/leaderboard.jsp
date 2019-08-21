@@ -3,24 +3,24 @@
 <%--
   Created by IntelliJ IDEA.
   User: lifengqiang
-  Date: 2019/8/14
-  Time: 14:21
+  Date: 2019/8/21
+  Time: 10:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/home.css"/>
+    <title id="title">Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
     <script src="/js/jquery/jquery.js"></script>
+    <script src="/js/leaderboard.js"></script>
     <script src="/js/function.js"></script>
-    <script src="/js/home.js"></script>
-    <title>主页</title>
 </head>
 <body style="background-color: #d2e9fb">
-<%@ include file="template/navigation.jsp" %>
+<%@include file="template/navigation.jsp"%>
 <div style="height: 50px;"></div>
 <div id="list" class="list "></div>
-<%@ include file="template/end.jsp" %>
+<%@include file="template/end.jsp"%>
 </body>
 </html>
