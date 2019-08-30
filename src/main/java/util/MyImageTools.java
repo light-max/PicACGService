@@ -17,7 +17,7 @@ public class MyImageTools {
      */
     public static void saveHeadPNG(File source, File topath) throws IOException {
         BufferedImage image = ImageIO.read(source);
-        int size = image.getWidth() < 256 ? image.getWidth() : 256;
+        int size = Math.min(image.getWidth(), 256);
         BufferedImage buffer = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
         Graphics graphics = buffer.getGraphics();
         graphics.drawImage(image, 0, 0, size, size, null);
@@ -62,7 +62,11 @@ public class MyImageTools {
      */
     public static void saveSubmissionShow(File source, File topath) throws IOException {
         BufferedImage image = ImageIO.read(source);
-        ImageIO.write(image, "jpg", topath);
+        BufferedImage buffer = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics graphics = buffer.getGraphics();
+        graphics.drawImage(image,0,0,image.getWidth(),image.getHeight(),null);
+        graphics.dispose();
+        ImageIO.write(buffer, "jpg", topath);
     }
 
     public static void main(String[] args) {

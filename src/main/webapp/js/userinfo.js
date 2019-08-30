@@ -37,9 +37,10 @@ function uploadHeader() {
 
 function updateInfo() {
     let sex = 0;
-    if ($('#sex1').attr('checked') === 'checked') {
+    let sexval = $("input[name='sex']:checked");
+    if (sexval.attr('id') === 'sex1') {
         sex = 1
-    } else if ($('#sex2').attr('checked') === 'checked') {
+    } else if (sexval.attr('id') === 'sex2') {
         sex = 2
     }
     let json = {"nickname": $('#nickname').val(), "word": $('#word').val(), "sex": sex};

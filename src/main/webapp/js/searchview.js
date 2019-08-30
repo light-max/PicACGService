@@ -31,16 +31,16 @@ function search(value) {
         $.get("/search", {value: value}, function (data) {
             let json = JSON.parse(data);
             let view = getQueryVariable('view');
-            if (view === 'keyword') {
+            if ('keyword' === view) {
                 setContent(json['keyword'], true)
-            } else if (view === 'user') {
+            } else if ('user' === view) {
                 setContent(json['user'], false)
             } else {
                 setContent(json['title'], true)
             }
-            $('#title').append(` ${json['title'].length}`)
-            $('#keyword').append(` ${json['keyword'].length}`)
-            $('#user').append(` ${json['user'].length}`)
+            $('#title').text(`标题 ${json['title'].length}`);
+            $('#keyword').text(`关键字 ${json['keyword'].length}`);
+            $('#user').text(`用户名 ${json['user'].length}`)
         })
     }
 }
@@ -53,8 +53,11 @@ function setContent(contents, atlas) {
             `<div/>`
     }
 
+    let list = $('#list');
+    list.text('');
+
     for (let i = 0; i < contents.length; i++) {
-        $('#list').append(createItem(contents[i]));
+        list.append(createItem(contents[i]));
     }
 }
 

@@ -31,7 +31,7 @@
     <p>搜索关键字</p>
     <input type="text" class="form-control" id="keyword"><br>
     <p>简介</p>
-    <input type="text" class="form-control" id="Introduction"><br>
+    <input type="text" class="form-control" id="introduction"><br>
     <p id="message"></p>
     <input style="width: 100px;" type="button" class="btn-primary btn" value="提交" onclick="upload()" id="uploadbt">
 </div>

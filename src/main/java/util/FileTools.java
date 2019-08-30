@@ -130,7 +130,7 @@ public class FileTools {
 
     public static File getSubmissionShowFile(long userId, long submissionId, int resId) {
         File path = new File(submission_show, String.format("%d/%d", userId, submissionId));
-        if (!path.mkdirs()) {
+        if (!path.exists()) {
             path.mkdirs();
         }
         return new File(path, resId + ".jpg");

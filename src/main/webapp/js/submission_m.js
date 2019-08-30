@@ -43,7 +43,7 @@ function getContent() {
 
 function createItem(content) {
     return `<div class="list-item" id="${content['id']}">` +
-        `<img class="list-item-img" src="${content['thumbnails'][0]}"/>` +
+        `<img class="list-item-img" src="${content['thumbnails'][0]}" onclick="openAtlas(${content['id']})"/>` +
         `<div class="list-item-content">` +
         `<p class="list-item-title">${content['title']}</p>` +
         `<p class="list-item-time">${getDate(content['releasetime'])}</p>` +
@@ -72,7 +72,7 @@ function deleteItem(id) {
         }, function (code) {
             if (code === 0) {
                 let item = document.getElementById(id);
-                item.parentNode.removeChild(a)
+                item.parentNode.removeChild(item);
             } else {
                 alert('登录信息已失效，请重新登录');
                 window.open('sign_in', '登录');
@@ -83,4 +83,8 @@ function deleteItem(id) {
 
 function editItem(id) {
     window.open('editsubmission?id=' + id);
+}
+
+function openAtlas(id) {
+    window.open('atlas?id=' + id)
 }
