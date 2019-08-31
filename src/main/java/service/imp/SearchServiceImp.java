@@ -43,7 +43,7 @@ public class SearchServiceImp implements SearchService {
         list = getValue(list, value);
         for (SearchValue v : list) {
             Long userid = submissionMapper.selectUserIdById(v.getId());
-            String url = StringTools.url + String.format("/image/small/%d/%d/0", userid, v.getId());
+            String url = StringTools.getUrl() + String.format("/image/small/%d/%d/0", userid, v.getId());
             v.setIcon(url);
         }
         return list;
@@ -77,7 +77,7 @@ public class SearchServiceImp implements SearchService {
         List<SearchValue> list = userMapper.selectNicknameAll();
         list = getValue(list, value);
         for (SearchValue v : list) {
-            v.setIcon(StringTools.url + "/image/small/head/" + v.getId());
+            v.setIcon(StringTools.getUrl() + "/image/small/head/" + v.getId());
         }
         return list;
     }

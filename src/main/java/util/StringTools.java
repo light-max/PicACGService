@@ -1,11 +1,28 @@
 package util;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * 用于字符串的一些操作
  */
 public class StringTools {
 
-    public static final String url = "http://192.168.0.104:8080";
+//    public static final String url = "http://192.168.0.104:8080";
+
+    private static String url = null;
+
+    public static String getUrl() {
+        if (url == null) {
+            try {
+                url = String.format("http://%s:8080",InetAddress.getLocalHost().getHostAddress());
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+        }
+        return url;
+    }
+
 
     /**
      * 验证登录名是否合法

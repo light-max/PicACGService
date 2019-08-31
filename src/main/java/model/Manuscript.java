@@ -36,7 +36,7 @@ public class Manuscript extends Submission {
     private void createImages() {
         images.clear();
         for (int i = 0; i < getNumber(); i++) {
-            String url = String.format("%s/image/source/%d/%d/%d", StringTools.url, getByuserid(), getId(), i);
+            String url = String.format("%s/image/source/%d/%d/%d", StringTools.getUrl(), getByuserid(), getId(), i);
             images.add(url);
         }
     }
@@ -44,7 +44,7 @@ public class Manuscript extends Submission {
     private void createThumbnails() {
         thumbnails.clear();
         for (int i = 0; i < getNumber(); i++) {
-            String url = String.format("%s/image/small/%d/%d/%d", StringTools.url, getByuserid(), getId(), i);
+            String url = String.format("%s/image/small/%d/%d/%d", StringTools.getUrl(), getByuserid(), getId(), i);
             thumbnails.add(url);
         }
     }
@@ -52,7 +52,7 @@ public class Manuscript extends Submission {
     private void createShow() {
         show.clear();
         for (int i = 0; i < getNumber(); i++) {
-            String url = String.format("%s/image/show/%d/%d/%d", StringTools.url, getByuserid(), getId(), i);
+            String url = String.format("%s/image/show/%d/%d/%d", StringTools.getUrl(), getByuserid(), getId(), i);
             show.add(url);
         }
     }

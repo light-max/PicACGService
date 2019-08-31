@@ -120,8 +120,8 @@ public class UserServiceImp implements UserService {
             sex = "女";
         }
         Integer number = submissionMapper.selectNumberByAuthorId(id);
-        String img_small = StringTools.url + "/image/small/head/" + id;
-        String img_source = StringTools.url + "/image/source/head/" + id;
+        String img_small = StringTools.getUrl() + "/image/small/head/" + id;
+        String img_source = StringTools.getUrl() + "/image/source/head/" + id;
         return new AuthorInfo(info.getNickname(), sex, number == null ? 0 : number, info.getWord(), img_small, img_source);
     }
 }
