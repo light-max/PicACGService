@@ -30,6 +30,9 @@ public class SearchServiceImp implements SearchService {
     private List<SearchValue> getValue(List<SearchValue> list, String value) {
         List<SearchValue> values = new ArrayList<>();
         for (SearchValue searchValue : list) {
+            if (searchValue.getValue() == null || searchValue.getValue().length() == 0) {
+                continue;
+            }
             String v = searchValue.getValue().toLowerCase();
             //随便匹配一下
             if (v.contains(value) || value.contains(v)) {
