@@ -1,5 +1,3 @@
-package test;
-
 import dao.SubmissionMapper;
 import model.SortManuscript;
 import org.apache.ibatis.io.Resources;

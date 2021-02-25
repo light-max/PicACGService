@@ -111,7 +111,7 @@ public class KeyBufferManager {
             @Override
             public void run() {
                 while (true) {
-                    System.out.println(keyMap.size() + ":" + userMap.size());
+//                    System.out.println(keyMap.size() + ":" + userMap.size());
                     try {
                         sleep(1000);
                     } catch (InterruptedException e) {

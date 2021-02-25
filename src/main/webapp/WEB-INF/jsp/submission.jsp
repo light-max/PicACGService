@@ -23,7 +23,8 @@
     <p style="color: #99a2aa">图片上传 <span id="number">0</span>/24</p>
     <div class="list" id="list">
     </div>
-    <input style="display: none" type="file" accept="image/jpg,image/jpeg,image/png" name="file" onchange="addImage(this)" id="fileselect">
+    <input style="display: none" type="file" accept="image/jpg,image/jpeg,image/png" name="file"
+           onchange="addImage(this)" id="fileselect">
     <input type="button" value="添加文件" class="btn btn-primary" onclick="$('#fileselect').click()">
     <hr style="filter: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#ccc size=1>
     <p>标题</p>

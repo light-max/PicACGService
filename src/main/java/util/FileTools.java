@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public class FileTools {
     //顶级目录
-    private static final File root = new File("F:\\PicACG");
+    private static final File root = new File("E:\\IDEA\\PicACGService\\files");
     //图片目录
     private static final File image = new File(root, "image");
     //投稿图片目录

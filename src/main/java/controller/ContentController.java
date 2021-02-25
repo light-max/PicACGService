@@ -23,6 +23,7 @@ public class ContentController {
 
     @Autowired
     ContentService contentService;
+//    ACG picture share
 
     /**
      * 随机获取其他用户发的稿件

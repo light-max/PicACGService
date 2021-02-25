@@ -53,7 +53,7 @@ function sign_up() {
             id: $('#verify_text').attr('verify_id'),
             answer: $('#verify').val()
         }, function (data) {
-            let json = JSON.parse(data)
+            let json = JSON.parse(data);
             $('#message').text(json['message']);
             if (json['code'] === 0) {
                 alert('注册成功，快去登录吧');

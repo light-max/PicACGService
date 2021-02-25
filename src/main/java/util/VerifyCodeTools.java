@@ -83,7 +83,8 @@ public class VerifyCodeTools {
     private VerifyCode[] table = new VerifyCode[]{
             new VerifyCode("1+1*0.5=?", "1.5"),
             new VerifyCode("10/20+0.6=?", "1.1"),
-            new VerifyCode("(2+3)*5=?", "25")
+            new VerifyCode("(2+3)*5=?", "25"),
+            new VerifyCode("2+2*4-5", "5")
     };
 
     /**

@@ -18,9 +18,9 @@
     <script src="/js/function.js"></script>
 </head>
 <body style="background-color: #d2e9fb">
-<%@include file="template/navigation.jsp"%>
+<%@include file="template/navigation.jsp" %>
 <div style="height: 50px;"></div>
 <div id="list" class="list "></div>
-<%@include file="template/end.jsp"%>
+<%@include file="template/end.jsp" %>
 </body>
 </html>

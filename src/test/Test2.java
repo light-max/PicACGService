@@ -1,5 +1,3 @@
-package test;
-
 import java.io.File;
 
 public class Test2 {
@@ -13,8 +11,7 @@ public class Test2 {
         if (file.isFile() && file.getName().endsWith(".xml")) {
             file.delete();
             System.out.println(file.getName());
-        }
-        else if (file.isDirectory()){
+        } else if (file.isDirectory()) {
             for (File fp : file.listFiles()) {
                 fun(fp);
             }

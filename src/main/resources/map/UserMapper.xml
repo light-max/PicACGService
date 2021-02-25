@@ -8,6 +8,6 @@
     </select>
 
     <select id="selectNicknameAll" resultType="model.SearchValue">
-         select id,nickname value from user
+        select id,nickname value from user
     </select>
 </mapper>

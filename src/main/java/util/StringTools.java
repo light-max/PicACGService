@@ -15,10 +15,11 @@ public class StringTools {
     public static String getUrl() {
         if (url == null) {
             try {
-                url = String.format("http://%s:8080",InetAddress.getLocalHost().getHostAddress());
+                url = String.format("http://%s:8080", InetAddress.getLocalHost().getHostAddress());
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }
+            System.out.println("端口号：" + url);
         }
         return url;
     }

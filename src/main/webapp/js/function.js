@@ -7,7 +7,7 @@ function getQueryVariable(variable) {
             return pair[1];
         }
     }
-    return (false);
+    return false;
 }
 
 function getDate(time) {

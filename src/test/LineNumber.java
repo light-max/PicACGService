@@ -1,5 +1,3 @@
-package test;
-
 import java.io.*;
 
 public class LineNumber {
@@ -10,6 +8,9 @@ public class LineNumber {
 
     public static void main(String[] args) {
         fun(file);
+        fun(new File("E:\\IDEA\\PicACGService\\src\\main\\webapp\\css"));
+        fun(new File("E:\\IDEA\\PicACGService\\src\\main\\webapp\\js"));
+        fun(new File("E:\\IDEA\\PicACGService\\src\\main\\webapp\\WEB-INF\\jsp"));
         System.out.println("size:" + size + " lines:" + lines);
     }
 
@@ -18,6 +19,9 @@ public class LineNumber {
             read(file);
         } else {
             if (file.getName().equals("test")) {
+                return;
+            }
+            if (file.getName().equals("jquery")) {
                 return;
             }
             for (File fp : file.listFiles()) {

@@ -1,5 +1,3 @@
-package test;
-
 import java.io.File;
 import java.util.HashMap;
 import java.util.Objects;

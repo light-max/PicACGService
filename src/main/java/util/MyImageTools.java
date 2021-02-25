@@ -15,7 +15,7 @@ public class MyImageTools {
      * @param topath
      * @throws IOException
      */
-    public static void saveHeadPNG(File source, File topath) throws IOException {
+    static void saveHeadPNG(File source, File topath) throws IOException {
         BufferedImage image = ImageIO.read(source);
         int size = Math.min(image.getWidth(), 256);
         BufferedImage buffer = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
@@ -64,7 +64,7 @@ public class MyImageTools {
         BufferedImage image = ImageIO.read(source);
         BufferedImage buffer = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics graphics = buffer.getGraphics();
-        graphics.drawImage(image,0,0,image.getWidth(),image.getHeight(),null);
+        graphics.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
         graphics.dispose();
         ImageIO.write(buffer, "jpg", topath);
     }

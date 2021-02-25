@@ -23,7 +23,7 @@
     </mvc:annotation-driven>
 
     <!--配置静态文件路径与映射-->
-    <mvc:default-servlet-handler />
+    <mvc:default-servlet-handler/>
 
     <!--配置视图解析bean-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
